@@ -7,12 +7,16 @@
 //
 
 import UIKit
-
+protocol ItemCellAmountDelegate {
+    func didChangeItems(itemsNumber: Int, itemType: String)
+}
 class ItemTableViewCell: UITableViewCell {
     @IBOutlet weak var item: UILabel!
     @IBOutlet weak var itemAmount: UILabel!
     @IBOutlet weak var itemsNumber: UILabel!
-    
+    var delegate: ItemCellAmountDelegate?
+    var itemCellType: String?
+        
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -29,6 +33,8 @@ class ItemTableViewCell: UITableViewCell {
         if items! > 0{
             items = items! - 1
             itemsNumber.text = "\(items ?? 1)"
+            self.delegate?.didChangeItems(itemsNumber: items!,
+                                          itemType: self.itemCellType!)
         }
     }
     
@@ -37,6 +43,8 @@ class ItemTableViewCell: UITableViewCell {
         if items! < 100{
             items = items! + 1
             itemsNumber.text = "\(items ?? 1)"
+            self.delegate?.didChangeItems(itemsNumber: items!,
+                                          itemType: self.itemCellType!)
         }
     }
 }

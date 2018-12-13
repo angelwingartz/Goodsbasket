@@ -8,22 +8,35 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ItemCellAmountDelegate{
     
     @IBOutlet weak var badge: UIBarButtonItem!
+    private lazy var badgeCount: Int = 0
+    private lazy var peaBags: Int = 0
+    private lazy var eggDozens: Int = 0
+    private lazy var milkBottles: Int = 0
+    private lazy var beanCans: Int = 0
+    private lazy var grandTotal: Double = 0
+    private lazy var basketItems: Array<Any> = availableItems()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        updateBadge()
     }
 
     //MARK: - UITableViewDatasource methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return availableItems().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellID = "itemCell"
-        let cell =  tableView.dequeueReusableCell(withIdentifier: cellID) as! UITableViewCell
+        let cell =  tableView.dequeueReusableCell(withIdentifier: .itemCellID) as! ItemTableViewCell
+        let itemInfo:Dictionary = basketItems[indexPath.row] as! Dictionary<String, Any>
+        cell.item.text = (itemInfo[.item] as! String)
+        cell.itemAmount.text = "$\(itemInfo[.price] ?? 0.00)"
+        //This will let us know what item corresponds to this cell
+        cell.itemCellType = (itemInfo[.item] as! String)
+        cell.delegate = self
         return cell
     }
 
@@ -31,6 +44,58 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90
+    }
+    
+    //MARK: Delegate method for Number and type of items selected
+    
+    func didChangeItems(itemsNumber: Int, itemType: String) {
+        switch itemType {
+        case .peas:
+            peaBags = itemsNumber
+            break
+        case .eggs:
+            eggDozens = itemsNumber
+            break
+        case .milk:
+            milkBottles = itemsNumber
+            break
+        case .beans:
+            beanCans = itemsNumber
+            break
+        default:
+            print("Uknown option O_o")
+        }
+        updateBadge()
+    }
+    
+    //MARK: - Update bar button item badge for number of purchased items
+    
+    func updateBadge(){
+        badgeCount = peaBags + eggDozens + milkBottles + beanCans
+        if badgeCount == 0{
+            badge.title = ""
+        }
+        else{
+            badge.title = "\(badgeCount)"
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == .checkoutSegue{
+            let peasPrice = (basketItems[0] as! Dictionary<String, Any>)[.price] as! Double
+            let eggsPrice = (basketItems[1] as! Dictionary<String, Any>)[.price] as! Double
+            let milkPrice = (basketItems[2] as! Dictionary<String, Any>)[.price] as! Double
+            let beansPrice = (basketItems[3] as! Dictionary<String, Any>)[.price] as! Double
+
+            grandTotal = (peasPrice)*Double(peaBags) +
+                         (eggsPrice)*Double(eggDozens) +
+                        (milkPrice)*Double(milkBottles) +
+                        (beansPrice)*Double(beanCans)
+            
+            //+ EggDozens*eggsPrice + milkBottles*milkPrice + beanCans*beansPrice
+            let checkoutVC = segue.destination as! CheckoutViewController
+            checkoutVC.total = grandTotal
+        }
     }
 }
 
