@@ -18,7 +18,8 @@ class CheckoutViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var pickerToolbar: UIToolbar!
     private lazy var selectedCurrency: String = "USD"
     private lazy var allCurrencies: Dictionary<String, String> = ["USD" : "US Dollar"]
-    private lazy var currencyList: Array<Any> = ["US Dollar"]
+    private lazy var currencyList: Array<Any> = ["USD"]
+    private lazy var currencyNamesList: Array<Any> = ["US Dollar"]
     override func viewDidLoad() {
         super.viewDidLoad()
         self.pickerView.isHidden = true
@@ -38,6 +39,7 @@ class CheckoutViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         apiManager.getCurrencyList { (response) in
             let currencies = response[.currencies] as! Dictionary<String, Any>
             self.currencyList = Array(currencies.keys)
+            self.currencyNamesList = Array(currencies.values)
             DispatchQueue.main.async {
                 self.spinner.stopAnimating()
                 self.spinner.isHidden = true
@@ -48,6 +50,7 @@ class CheckoutViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         }
     }
 
+    //MARK: - UIPIckerViewDataSource methods
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return currencyList.count
     }
@@ -57,8 +60,10 @@ class CheckoutViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return (currencyList[row] as! String)
+        return (currencyNamesList[row] as! String)
     }
+    
+    //MARK: - UIPIckerView Delegate methods
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedCurrency = currencyList[row] as! String
@@ -78,7 +83,6 @@ class CheckoutViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                 self.spinner.isHidden = true
                 self.totalLabel.text = "$\(totalFormattedString)"
             }
-            print(result)
         }
     }
 }
