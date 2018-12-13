@@ -107,14 +107,14 @@
 			children = (
 				0BB847ED21C21D5C00226193 /* AppDelegate.swift */,
 				0BB847EF21C21D5C00226193 /* ViewController.swift */,
-				0BB847F121C21D5C00226193 /* Main.storyboard */,
-				0BB847F421C21D5F00226193 /* Assets.xcassets */,
-				0BB847F621C21D5F00226193 /* LaunchScreen.storyboard */,
-				0BB847F921C21D5F00226193 /* Info.plist */,
 				0BB8481B21C21E1C00226193 /* CheckoutViewController.swift */,
 				0BB8481D21C222DB00226193 /* ItemTableViewCell.swift */,
 				0BB8481F21C223CB00226193 /* Constants.swift */,
 				0BB8482121C22A0900226193 /* CurrencyService.swift */,
+				0BB847F121C21D5C00226193 /* Main.storyboard */,
+				0BB847F421C21D5F00226193 /* Assets.xcassets */,
+				0BB847F621C21D5F00226193 /* LaunchScreen.storyboard */,
+				0BB847F921C21D5F00226193 /* Info.plist */,
 			);
 			path = GoodsBasket;
 			sourceTree = "<group>";

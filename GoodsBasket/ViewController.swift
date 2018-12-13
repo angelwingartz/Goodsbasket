@@ -34,6 +34,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let itemInfo:Dictionary = basketItems[indexPath.row] as! Dictionary<String, Any>
         cell.item.text = (itemInfo[.item] as! String)
         cell.itemAmount.text = "$\(itemInfo[.price] ?? 0.00)"
+        cell.unit.text = "a " + (itemInfo[.unit] as! String)
         //This will let us know what item corresponds to this cell
         cell.itemCellType = (itemInfo[.item] as! String)
         cell.delegate = self
@@ -44,6 +45,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     //MARK: Delegate method for Number and type of items selected
@@ -91,10 +96,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                          (eggsPrice)*Double(eggDozens) +
                         (milkPrice)*Double(milkBottles) +
                         (beansPrice)*Double(beanCans)
-            
-            //+ EggDozens*eggsPrice + milkBottles*milkPrice + beanCans*beansPrice
             let checkoutVC = segue.destination as! CheckoutViewController
             checkoutVC.total = grandTotal
+        }
+    }
+    
+
+    @IBAction func checkoutNow(_ sender: Any) {
+        if badgeCount == 0 {
+            let alert = UIAlertController.init(title: "Empty Basket", message: "Please add items to the basket bofore checking out, you can do so using the + and - buttons located at the right of each item name", preferredStyle: UIAlertController.Style.alert)
+            let okAction = UIAlertAction.init(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
+        }
+        else{
+            performSegue(withIdentifier: .checkoutSegue, sender: self)
         }
     }
 }
