@@ -17,6 +17,7 @@
 		0BB8481C21C21E1C00226193 /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8481B21C21E1C00226193 /* CheckoutViewController.swift */; };
 		0BB8481E21C222DB00226193 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8481D21C222DB00226193 /* ItemTableViewCell.swift */; };
 		0BB8482021C223CB00226193 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8481F21C223CB00226193 /* Constants.swift */; };
+		0BB8482221C22A0900226193 /* CurrencyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB8482121C22A0900226193 /* CurrencyService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		0BB8481B21C21E1C00226193 /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
 		0BB8481D21C222DB00226193 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		0BB8481F21C223CB00226193 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		0BB8482121C22A0900226193 /* CurrencyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				0BB8481B21C21E1C00226193 /* CheckoutViewController.swift */,
 				0BB8481D21C222DB00226193 /* ItemTableViewCell.swift */,
 				0BB8481F21C223CB00226193 /* Constants.swift */,
+				0BB8482121C22A0900226193 /* CurrencyService.swift */,
 			);
 			path = GoodsBasket;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 			files = (
 				0BB8482021C223CB00226193 /* Constants.swift in Sources */,
 				0BB8481E21C222DB00226193 /* ItemTableViewCell.swift in Sources */,
+				0BB8482221C22A0900226193 /* CurrencyService.swift in Sources */,
 				0BB847F021C21D5C00226193 /* ViewController.swift in Sources */,
 				0BB8481C21C21E1C00226193 /* CheckoutViewController.swift in Sources */,
 				0BB847EE21C21D5C00226193 /* AppDelegate.swift in Sources */,

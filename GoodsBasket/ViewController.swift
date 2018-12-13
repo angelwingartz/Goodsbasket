@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITabBarDelegate, UITableViewDataSource{
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,5 +25,8 @@ class ViewController: UIViewController, UITabBarDelegate, UITableViewDataSource{
         return cell
     }
 
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 90
+    }
 }
 
