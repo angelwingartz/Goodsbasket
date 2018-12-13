@@ -9,7 +9,8 @@
 import UIKit
 
 class CheckoutViewController: UIViewController {
-
+    @IBOutlet weak var totalLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -17,6 +18,8 @@ class CheckoutViewController: UIViewController {
     }
     
 
+    @IBAction func changeCurrency() {
+    }
     /*
     // MARK: - Navigation
 
