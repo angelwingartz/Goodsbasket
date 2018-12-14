@@ -15,6 +15,8 @@ class ItemTableViewCell: UITableViewCell {
     @IBOutlet weak var itemAmount: UILabel!
     @IBOutlet weak var itemsNumber: UILabel!
     @IBOutlet weak var unit: UILabel!
+    @IBOutlet weak var plusButton: UIButton!
+    @IBOutlet weak var minusButton: UIButton!
     var delegate: ItemCellAmountDelegate?
     var itemCellType: String?
         

@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ItemCellAmountDelegate{
     
     @IBOutlet weak var badge: UIBarButtonItem!
+    @IBOutlet weak var tableView: UITableView!
     private lazy var badgeCount: Int = 0
     private lazy var peaBags: Int = 0
     private lazy var eggDozens: Int = 0
@@ -21,6 +22,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //This will help with the Unit testing
+        tableView.accessibilityIdentifier = "tableID"
         updateBadge()
     }
 
@@ -38,6 +41,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         //This will let us know what item corresponds to this cell
         cell.itemCellType = (itemInfo[.item] as! String)
         cell.delegate = self
+        //This property will let us know what button to tap when doing UI automated tests
+        cell.plusButton.accessibilityIdentifier = "itemCellPlus_\(indexPath.row)"
         return cell
     }
 

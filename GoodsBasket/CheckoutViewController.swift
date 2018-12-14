@@ -24,6 +24,7 @@ class CheckoutViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         super.viewDidLoad()
         self.pickerView.isHidden = true
         self.pickerToolbar.isHidden = true
+
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -114,6 +114,8 @@
                                             <outlet property="item" destination="ug8-FZ-Ctj" id="bLQ-I2-Ka6"/>
                                             <outlet property="itemAmount" destination="dPL-zY-vUR" id="GzH-OP-tdG"/>
                                             <outlet property="itemsNumber" destination="4BJ-Nc-Xvs" id="h4F-kl-8ze"/>
+                                            <outlet property="minusButton" destination="thO-Qe-a0n" id="MzU-Hg-UWO"/>
+                                            <outlet property="plusButton" destination="vpd-uj-rPf" id="hjF-Qz-MPO"/>
                                             <outlet property="unit" destination="6hI-Le-hVm" id="Vuc-ib-mDj"/>
                                         </connections>
                                     </tableViewCell>
@@ -152,7 +154,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Basket" id="vfl-6V-8sH">
                         <rightBarButtonItems>
-                            <barButtonItem image="basket" id="A5O-6l-NP0">
+                            <barButtonItem title="basket" image="basket" id="A5O-6l-NP0">
                                 <connections>
                                     <action selector="checkoutNow:" destination="BYZ-38-t0r" id="ARg-Vd-SJh"/>
                                 </connections>
@@ -162,6 +164,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="badge" destination="1P9-DA-RYX" id="1qE-40-kZ2"/>
+                        <outlet property="tableView" destination="sci-zV-JHT" id="F2L-ey-OZq"/>
                         <segue destination="kqL-Fp-zgf" kind="show" identifier="checkoutSegue" id="sYs-Ou-rKe"/>
                     </connections>
                 </viewController>
