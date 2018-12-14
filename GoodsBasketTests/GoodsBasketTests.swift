@@ -20,8 +20,28 @@ class GoodsBasketTests: XCTestCase {
     }
 
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+    }
+    
+    func testCurrencyList() {
+        let api = CurrencyService.shared()
+        let promise = expectation(description: "Currency List API Request")
+        api.getCurrencyList { (response) in
+            XCTAssertTrue(response["success"] as! Bool == true)
+            promise.fulfill()
+        }
+        waitForExpectations(timeout: 1, handler: nil)
+    }
+    
+    func testCurrencyConversion() {
+        let api = CurrencyService.shared()
+        let promise = expectation(description: "Currency Conversion Request")
+        
+        api.getCurrencyValue(amount: 56.11, toCurrency: "CAD") { (result) in
+            XCTAssertTrue(result > 0)
+            promise.fulfill()
+        }
+        waitForExpectations(timeout: 1, handler: nil)
     }
 
     func testPerformanceExample() {
