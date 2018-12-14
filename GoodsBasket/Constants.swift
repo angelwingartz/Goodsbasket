@@ -31,16 +31,9 @@ extension String {
     static let exchangeValues = "quotes"
 }
 
-extension Double{
-    public static let peasPrice = 0.95
-    public static let eggsPrice = 2.10
-    public static let milkPrice = 1.12
-    public static let beansPrice = 0.73
-}
-
 func availableItems() -> Array<Any> {
     return [["item" : "Peas", "unit": "Bag", "price" : 0.95],
             ["item" : "Eggs", "unit": "Dozen", "price" : 2.10],
-            ["item" : "Milk", "unit": "Bottle", "price" : 1.12],
+            ["item" : "Milk", "unit": "Bottle", "price" : 1.30],
             ["item" : "Beans", "unit": "Can", "price" : 0.73]]
 }
